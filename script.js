@@ -16,6 +16,9 @@ const jump = () => {
     }
 };
 
+const reiniciarJogo = () => {
+    window.location.reload(true)
+}
 const loop = setInterval(() => {
     if (jogoEmAndamento) {
         const pipePosition = pipe.offsetLeft;
@@ -47,4 +50,9 @@ const loop = setInterval(() => {
     }
 }, 10);
 
+//comandos para pular
+document.addEventListener('click', jump);
 document.addEventListener('keydown', jump);
+
+//botão reiniciar
+reiniciarBtn.addEventListener('click', reiniciarJogo);

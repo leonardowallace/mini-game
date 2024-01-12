@@ -104,6 +104,12 @@ document.addEventListener('keypress', e => {
     }
   })
 
+  document.addEventListener('touchstart', e => {
+    if (e.touches.length) {
+      jump() 
+    }
+  })
+
 //botão reiniciar
 reiniciarBtn.addEventListener('click', reiniciarJogo);
 

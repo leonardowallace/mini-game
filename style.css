@@ -8,7 +8,7 @@
     border: 5px solid black;
     width: 70%;
     height: 70vh;
-    margin: auto;
+    margin: 15px auto;
     border-radius: 26px;
     overflow: hidden;
 }
@@ -54,7 +54,7 @@
 }
 
 .fim{
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
 }

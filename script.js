@@ -17,7 +17,6 @@ audioGameOver = new Audio('./sound/audio_gameover.mp3')
 
 const iniciarJogo= () =>{
     jogoEmAndamento = true;
-    ponto++;
     pipe.classList.add('pipe-animation')
 
     // audio
@@ -89,8 +88,6 @@ const loop = setInterval(() => {
             fim.style.display = 'block';
             jogoEmAndamento = false; // Definir jogoEmAndamento como falso antes de resetar a pontuação
             score.innerHTML = `Score: ${ponto}`;
-            ponto = 0;
-
         } else {
             ponto++;
             score.innerHTML = `Score: ${ponto}`;

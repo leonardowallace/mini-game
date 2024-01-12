@@ -85,12 +85,12 @@ const loop = setInterval(() => {
               }
               setTimeout(stopAudio, 7000)
 
-            fim.style.display = 'block';
+            fim.style.display = 'flex';
             jogoEmAndamento = false; // Definir jogoEmAndamento como falso antes de resetar a pontuação
-            score.innerHTML = `Score: ${ponto}`;
+            score.innerHTML = `SCORE: ${ponto}`;
         } else {
             ponto++;
-            score.innerHTML = `Score: ${ponto}`;
+            score.innerHTML = `SCORE: ${ponto}`;
         }
     }
 }, 10);

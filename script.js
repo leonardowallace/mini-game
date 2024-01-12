@@ -36,6 +36,7 @@ const reiniciarJogo = () => {
     mario.src='./imagens/mario.gif'
     mario.style.width = '150px'
     mario.style.bottom = '0'
+    mario.style.margin = ''
 
     fim.style.display= 'none'
 
@@ -59,7 +60,7 @@ const jump = () => {
 const loop = setInterval(() => {
     if (jogoEmAndamento) {
         const pipePosition = pipe.offsetLeft;
-        const marioPosition = window.getComputedStyle(mario).bottom.replace('px', '');
+        const marioPosition = +window.getComputedStyle(mario).bottom.replace('px', '');
 
         if (pipePosition <= 120 && pipePosition > 0 && marioPosition < 80) {
             pipe.classList.remove('pipe-animation')

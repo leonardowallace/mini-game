@@ -38,6 +38,8 @@
 }
 
 .pipe-animation{
+    right: -80px;
+    width: 80px;
     animation: pipe-animation 1.5s infinite linear;
 }
 

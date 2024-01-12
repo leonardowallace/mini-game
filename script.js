@@ -1,11 +1,51 @@
 let ponto = 0;
-let jogoEmAndamento = true;
+let jogoEmAndamento = false;
 
+
+const reiniciarBtn = document.getElementById('reiniciarBtn');
+const iniciarBtn = document.getElementById('iniciarBtn');
 const score = document.querySelector('.score');
 const fim = document.querySelector('.fim');
 const mario = document.querySelector('.mario');
 const pipe = document.querySelector('.pipe');
 const cloud = document.querySelector('.cloud');
+
+audioStart = new Audio('./sound/audio_theme.mp3')
+audioGameOver = new Audio('./sound/audio_gameover.mp3')
+
+
+
+const iniciarJogo= () =>{
+    jogoEmAndamento = true;
+    ponto++;
+    pipe.classList.add('pipe-animation')
+
+    // audio
+  audioStart.play()
+}
+
+const reiniciarJogo = () => {
+    jogoEmAndamento = false;
+    ponto = 0;
+    score.innerHTML = `SCORE: ${ponto}`
+    //reset cano
+    pipe.style.left = ''
+    pipe.style.right = '-80'
+
+    //reset mario
+    mario.src='./imagens/mario.gif'
+    mario.style.width = '150px'
+    mario.style.bottom = '0'
+
+    fim.style.display= 'none'
+
+    //reset musica
+    audioGameOver.pause()
+  audioGameOver.currentTime = 0;
+
+  audioStart.play()
+  audioStart.currentTime = 0;
+}
 
 const jump = () => {
     if (jogoEmAndamento) {
@@ -16,33 +56,40 @@ const jump = () => {
     }
 };
 
-const reiniciarJogo = () => {
-    window.location.reload(true)
-}
 const loop = setInterval(() => {
     if (jogoEmAndamento) {
         const pipePosition = pipe.offsetLeft;
-        const marioPosition = +window.getComputedStyle(mario).bottom.replace('px', '');
-        const cloudPosition = cloud.offsetLeft;
+        const marioPosition = window.getComputedStyle(mario).bottom.replace('px', '');
 
         if (pipePosition <= 120 && pipePosition > 0 && marioPosition < 80) {
-            pipe.style.animation = 'none';
+            pipe.classList.remove('pipe-animation')
             pipe.style.left = `${pipePosition}px`;
 
-            mario.style.animation = 'none';
+            mario.classList.remove('jump')
             mario.style.bottom = `${marioPosition}px`;
 
             mario.src = './imagens/game-over.png';
             mario.style.width = '80px';
             mario.style.marginLeft = '40px';
 
-            cloud.style.animation = 'none';
-            cloud.style.left = `${cloudPosition}px`;
+            //musica
+            function stopAudioStart() {
+                audioStart.pause()
+              }
+              stopAudioStart()
+              
+              audioGameOver.play()
+              
+              function stopAudio() {
+                audioGameOver.pause()
+              }
+              setTimeout(stopAudio, 7000)
 
             fim.style.display = 'block';
             jogoEmAndamento = false; // Definir jogoEmAndamento como falso antes de resetar a pontuação
             score.innerHTML = `Score: ${ponto}`;
             ponto = 0;
+
         } else {
             ponto++;
             score.innerHTML = `Score: ${ponto}`;
@@ -50,9 +97,16 @@ const loop = setInterval(() => {
     }
 }, 10);
 
+
 //comandos para pular
-document.addEventListener('click', jump);
-document.addEventListener('keydown', jump);
+document.addEventListener('keypress', e => {
+    const tecla = e.key
+    if (tecla === ' ') {
+      jump()
+    }
+  })
 
 //botão reiniciar
 reiniciarBtn.addEventListener('click', reiniciarJogo);
+
+iniciarBtn.addEventListener('click', iniciarJogo);

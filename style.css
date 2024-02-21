@@ -40,7 +40,7 @@
 .pipe-animation{
     right: -80px;
     width: 80px;
-    animation: pipe-animation 3s infinite linear;
+    animation: pipe-animation 2.2s infinite linear;
 }
 
 .medium{
@@ -48,7 +48,7 @@
 }
 
 .hard{
-    animation: pipe-animation 3s infinite linear;
+    animation: pipe-animation 1s infinite linear;
 }
 
 .pipe.hard{
@@ -64,7 +64,7 @@
 }
 
 .jump{
-    animation: jump 750ms ease-out;
+    animation: jump 800ms ease-out;
 }
 
 .fim{
@@ -122,11 +122,11 @@ div.score{
     }
 
     50%{
-        bottom: 180px;
+        bottom: 200px;
     }
 
     60%{
-        bottom: 180px;
+        bottom: 200px;
     }
 
 

@@ -6,7 +6,7 @@
 
 .container{
     border: 5px solid black;
-    width: 95%;
+    width: 70%;
     height: 70vh;
     margin: 15px auto;
     border-radius: 26px;
@@ -45,16 +45,6 @@
 
 .medium{
     animation: pipe-animation 1.5s infinite linear;
-}
-
-.hard{
-    animation: pipe-animation 1s infinite linear;
-}
-
-.pipe.hard{
-    right: -80px;
-    width: 80px;
-    animation: pipe-animation 0.2s infinite linear;
 }
 
 .mario{
